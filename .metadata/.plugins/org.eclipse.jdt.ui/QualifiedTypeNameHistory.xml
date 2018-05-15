@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.security.SecureRandom"/>
+<fullyQualifiedTypeName name="javax.crypto.spec.DESKeySpec"/>
+<fullyQualifiedTypeName name="javax.crypto.SecretKeyFactory"/>
+<fullyQualifiedTypeName name="javax.crypto.SecretKey"/>
+<fullyQualifiedTypeName name="javax.crypto.Cipher"/>
+<fullyQualifiedTypeName name="cn.eran.encryption.util.DESUtil"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+</qualifiedTypeNameHistroy>
