@@ -1,9 +1,14 @@
 package cn.eran.encryption;
 
 import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
+import java.util.HashMap;
 
 import cn.eran.encryption.util.AESUtil;
 import cn.eran.encryption.util.DESUtil;
+import cn.eran.encryption.util.RSAUtil;
 
 public class TestEncryption {
     private static final String KEY = "123456abc";  
@@ -38,6 +43,42 @@ public class TestEncryption {
 	        String decrypt = AESUtil.decrypt(encrypt, KEY);    
 	        System.out.println("解密后：" + decrypt);  
 	        
+	    System.out.println("----------------------------------RSA--------------------------------");
+        
+	    HashMap<String, Object> map = null;
+		try {
+			map = RSAUtil.getKeys();
+		} catch (NoSuchAlgorithmException e1) {
+			e1.printStackTrace();
+		}  
+        //生成公钥和私钥  
+        RSAPublicKey publicKey = (RSAPublicKey) map.get("public");  
+        RSAPrivateKey privateKey = (RSAPrivateKey) map.get("private");  
+          
+        //模  
+        String modulus = publicKey.getModulus().toString();  
+        //公钥指数  
+        String public_exponent = publicKey.getPublicExponent().toString();  
+        //私钥指数  
+        String private_exponent = privateKey.getPrivateExponent().toString();  
+        //明文  
+        String ming = "123456789";  
+        //使用模和指数生成公钥和私钥  
+        RSAPublicKey pubKey = RSAUtil.getPublicKey(modulus, public_exponent);  
+        RSAPrivateKey priKey = RSAUtil.getPrivateKey(modulus, private_exponent);  
+        //加密后的密文  
+        String mi = null;
+		try {
+			mi = RSAUtil.encryptByPublicKey(ming, pubKey);
+			ming = RSAUtil.decryptByPrivateKey(mi, priKey);  
+		} catch (Exception e) {
+		}  
+        System.out.println("加密后：" + mi);  
+        //解密后的明文  
+        
+        System.out.println("解密后：" + ming);  
+	    
+	    
 	}
 
 }
