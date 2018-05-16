@@ -214,3 +214,8 @@ public class RSAUtil{
         return arrays;  
     }  
 }  
+
+/*
+ * 工具是直接拷贝的，没有深入了解
+ * RSA加密密钥的长度规定在96bits~1024bits
+ * */
