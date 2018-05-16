@@ -10,6 +10,7 @@ import cn.eran.encryption.util.AESUtil;
 import cn.eran.encryption.util.DESUtil;
 import cn.eran.encryption.util.MD5Util;
 import cn.eran.encryption.util.RSAUtil;
+import cn.eran.encryption.util.SHA1Util;
 
 public class TestEncryption {
     private static final String KEY = "123456abc";  
@@ -79,11 +80,14 @@ public class TestEncryption {
         
         System.out.println("解密后：" + ming);  
 	    
-	    System.out.println("----------------------------------MD5加密--------------------------------");
+	    System.out.println("----------------------------------MD5签名--------------------------------");
 	    System.out.println(MD5Util.MD5("123"));
 	    System.out.println(MD5Util.md5Password("123")); //在线md5解析无法还原
 	    boolean verify = MD5Util.verify("123", "77cd8fe8ee7cd43696d6a00219274026792122095a376875");
 	    System.out.println(verify);
+	    
+	    System.out.println("----------------------------------SHA1签名--------------------------------");
+	    System.out.println(SHA1Util.encode("123"));
 	}
 
 }
